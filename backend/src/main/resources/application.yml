@@ -3,4 +3,19 @@ app:
     api-base: ''
     model: ''
 
-OPENAI_API_KEY: 'key'
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
