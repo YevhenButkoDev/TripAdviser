@@ -1,7 +1,9 @@
-package com.trip.adviser.adviser;
+package com.trip.adviser;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.*;
+import org.springframework.web.client.*;
 
 @SpringBootApplication
 public class AdviserApplication {
@@ -10,4 +12,8 @@ public class AdviserApplication {
 		SpringApplication.run(AdviserApplication.class, args);
 	}
 
+	@Bean
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
+	}
 }

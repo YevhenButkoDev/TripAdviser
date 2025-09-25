@@ -1,0 +1,6 @@
+app:
+  openai:
+    api-base: ''
+    model: ''
+
+OPENAI_API_KEY: 'key'
