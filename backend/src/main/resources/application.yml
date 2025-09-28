@@ -19,3 +19,7 @@ spring:
   ai:
     openai:
       api-key: ${OPENAI_API_KEY}
+
+duffel:
+  api-key: ${DUFFEL_API_KEY:your-duffel-api-key-here}
+  base-url: https://api.duffel.com

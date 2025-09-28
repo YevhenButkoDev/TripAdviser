@@ -7,28 +7,17 @@ import com.fasterxml.jackson.annotation.*;
 public record TripIntent(
     String intent,
     @JsonProperty("origin_city") String originCity,
-    @JsonProperty("origin_city_iata") String originCityIata,
-    @JsonProperty("travel_window") TravelWindow travelWindow,
-    @JsonProperty("budget_eur") Double budgetEur,
-    Party party,
-    // Accept [] or null -> empty list
     @JsonSetter(nulls = Nulls.AS_EMPTY)
-    List<String> destinations,
-
-    @JsonProperty("destinations_iata")
-    @JsonSetter(nulls = Nulls.AS_EMPTY)
-    List<String> destinationsIata,
-
-    // Accept [] or null -> empty list
-    @JsonSetter(nulls = Nulls.AS_EMPTY)
-    List<String> waypoints
+    List<Destination> destinations
 ) {
-    public record TravelWindow(
-        String month,
-        @JsonProperty("duration_nights") DurationNights durationNights
+    public record Destination(
+        @JsonProperty("destination_country") String destinationCountry,
+        @JsonProperty("destination_city") String destinationCity,
+        String description,
+        @JsonProperty("budget_suitability") String budgetSuitability,
+        @JsonProperty("weather_conditions") String weatherConditions,
+        @JsonProperty("key_attractions") List<String> keyAttractions,
+        @JsonProperty("estimated_flight_cost_eur") Integer estimatedFlightCostEur,
+        @JsonProperty("estimated_accommodation_cost_eur") Integer estimatedAccommodationCostEur
     ) {}
-
-    public record DurationNights(Integer min, Integer max) {}
-
-    public record Party(Integer adults, Integer children) {}
 }
